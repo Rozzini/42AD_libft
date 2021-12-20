@@ -34,3 +34,4 @@ int	ft_is_digit(char c)
 	return (result);
 }
 
+int amin
