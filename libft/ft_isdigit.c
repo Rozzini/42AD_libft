@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mraspors <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 08:19:11 by mraspors          #+#    #+#             */
-/*   Updated: 2021/12/22 08:51:37 by mraspors         ###   ########.fr       */
+/*   Created: 2021/12/20 13:01:57 by mraspors          #+#    #+#             */
+/*   Updated: 2021/12/20 13:05:13 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_calloc(size_t nitems, size_t size)
+int	ft_isdigit(int c)
 {
-	char	*pointer;
-	size_t	i;
-
-	i = 0;
-	if (nitems == 0 || size == 0)
-		return (NULL);
+	if (c >= 48 && c <= 57)
+		return (1);
 	else
-	{
-		pointer = malloc(nitems * size);
-		while (i < nitems * size)
-			pointer[i++] = '\0';
-		return (pointer);
-	}
+		return (0);
 }

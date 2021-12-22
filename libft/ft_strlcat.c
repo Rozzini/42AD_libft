@@ -10,50 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int				count(char *dest)
+size_t	ft_len(const char *s)
 {
-	int i;
-	int c;
+	int	i;
 
 	i = 0;
-	c = 0;
-	while (dest[i] != '\0')
-	{
-		c++;
+	while (s[i] != '\0')
 		i++;
-	}
-	return (c);
-}
-
-int				find_null(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
 	return (i);
 }
 
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	unsigned int	i;
-	int				null_pos;
-	int				result;
+	size_t	dst_len;
+	size_t	src_len;
+	size_t	i;
 
-	result = 0;
 	i = 0;
-	null_pos = find_null(dest);
-	while (src[i] != '\0' && i < size)
+	dst_len = ft_len(dst);
+	src_len = ft_len(src);
+	while (i < size)
 	{
-		dest[i + null_pos] = src[i];
+		dst[dst_len + i] = src[i];
 		i++;
 	}
-	dest[null_pos + i] = '\0';
-	result = count(dest);
-	return (result);
+	dst[dst_len + i] = '\0';
+	return (dst_len + size);
 }

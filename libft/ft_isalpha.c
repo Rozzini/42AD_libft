@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mraspors <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 08:19:11 by mraspors          #+#    #+#             */
-/*   Updated: 2021/12/22 08:51:37 by mraspors         ###   ########.fr       */
+/*   Created: 2021/12/20 14:35:45 by mraspors          #+#    #+#             */
+/*   Updated: 2021/12/20 14:35:49 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_calloc(size_t nitems, size_t size)
+int	ft_isalpha(int c)
 {
-	char	*pointer;
-	size_t	i;
-
-	i = 0;
-	if (nitems == 0 || size == 0)
-		return (NULL);
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+		return (1);
 	else
-	{
-		pointer = malloc(nitems * size);
-		while (i < nitems * size)
-			pointer[i++] = '\0';
-		return (pointer);
-	}
+		return (0);
 }

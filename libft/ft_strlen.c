@@ -5,20 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mraspors <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/29 11:42:26 by mraspors          #+#    #+#             */
-/*   Updated: 2021/06/29 11:42:28 by mraspors         ###   ########.fr       */
+/*   Created: 2021/12/21 00:03:18 by mraspors          #+#    #+#             */
+/*   Updated: 2021/12/21 00:03:21 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+size_t	ft_strlen(const char *s)
 {
-	int count;
+	int	i;
+	int	result;
 
-	count = 0;
-	while (*str != '\0')
-	{
-		count++;
-		str++;
-	}
-	return (count);
+	i = 0;
+	result = 0;
+	while (s[i++] != '\0')
+		result++;
+	return (result);
 }

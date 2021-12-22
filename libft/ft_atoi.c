@@ -17,11 +17,11 @@ void	check(char *str, int *count_negative, int *i)
 	(*i)++;
 }
 
-int		ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
-	int i;
-	int integer;
-	int count_negative;
+	int	i;
+	int	integer;
+	int	count_negative;
 
 	integer = 0;
 	count_negative = 0;

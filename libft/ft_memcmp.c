@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mraspors <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 08:19:11 by mraspors          #+#    #+#             */
-/*   Updated: 2021/12/22 08:51:37 by mraspors         ###   ########.fr       */
+/*   Created: 2021/12/22 07:54:35 by mraspors          #+#    #+#             */
+/*   Updated: 2021/12/22 07:54:36 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_calloc(size_t nitems, size_t size)
+int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
-	char	*pointer;
-	size_t	i;
+	const char	*s1;
+	const char	*s2;
+	size_t		i;
+	int			result;
 
+	s1 = (const char *) str1;
+	s2 = (const char *) str2;
 	i = 0;
-	if (nitems == 0 || size == 0)
-		return (NULL);
-	else
+	result = 0;
+	while (i < n)
 	{
-		pointer = malloc(nitems * size);
-		while (i < nitems * size)
-			pointer[i++] = '\0';
-		return (pointer);
+		result = result + (s1[i] - s2[i]);
+		i++;
 	}
+	return (result);
 }

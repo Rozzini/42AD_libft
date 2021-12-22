@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mraspors <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 08:19:11 by mraspors          #+#    #+#             */
-/*   Updated: 2021/12/22 08:51:37 by mraspors         ###   ########.fr       */
+/*   Created: 2021/12/20 23:49:44 by mraspors          #+#    #+#             */
+/*   Updated: 2021/12/20 23:49:46 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_calloc(size_t nitems, size_t size)
+int	ft_isprint(int c)
 {
-	char	*pointer;
-	size_t	i;
-
-	i = 0;
-	if (nitems == 0 || size == 0)
-		return (NULL);
+	if (c >= 32 && c <= 126)
+		return (1);
 	else
-	{
-		pointer = malloc(nitems * size);
-		while (i < nitems * size)
-			pointer[i++] = '\0';
-		return (pointer);
-	}
+		return (0);
 }

@@ -5,32 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mraspors <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/27 16:51:56 by mraspors          #+#    #+#             */
-/*   Updated: 2021/06/27 17:59:47 by mraspors         ###   ########.fr       */
+/*   Created: 2021/12/22 14:37:02 by mraspors          #+#    #+#             */
+/*   Updated: 2021/12/22 14:37:05 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int		ft_strlcpy(char *dest, char *src, unsigned int size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	unsigned int	i;
-	unsigned int	length;
-	int				first_null_flag;
+	size_t	i;
+	size_t	l;
 
-	first_null_flag = 0;
-	length = 0;
+	l = 0;
 	i = 0;
 	while (i < size)
 	{
 		if (src[i] == '\0')
-			first_null_flag = 1;
-		if (src[i] != '\0' && first_null_flag == 0)
-		{
-			dest[i] = src[i];
-			length++;
-		}
-		else
-			dest[i] = '\0';
+			break ;
+		dst[i] = src[i];
+		l++;
 		i++;
 	}
-	return (length);
+	dst[i] = '\0';
+	return (l);
 }

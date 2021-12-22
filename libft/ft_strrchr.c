@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_digit.c                                      :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mraspors <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/20 13:01:57 by mraspors          #+#    #+#             */
-/*   Updated: 2021/12/20 13:05:13 by mraspors         ###   ########.fr       */
+/*   Created: 2021/12/21 08:10:46 by mraspors          #+#    #+#             */
+/*   Updated: 2021/12/21 08:10:49 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_digit(char c)
+char	*ft_strrchr(char *s, int c)
 {
-	int	result;
+	char	*str;
+	int		i;
+	int		result;
 
-	if (str[0] == '\0')
-		return (1);
+	result = -1;
 	i = 0;
-	result = 0;
+	str = s;
 	while (str[i] != '\0')
 	{
-		if (str[i] >= 65 && str[i] <= 90)
-		{
-			result = 1;
-		}
-		else
-		{
-			result = 0;
-			break ;
-		}
+		if (str[i] == c)
+			result = i;
 		i++;
 	}
-	return (result);
+	if (str[i] == '\0' && result == -1)
+		return (&str[i]);
+	else
+		return (&str[result]);
 }
-
-int amin
