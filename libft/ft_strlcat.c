@@ -9,7 +9,7 @@
 /*   Updated: 2021/06/28 17:56:27 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include "libft.h"
 size_t	ft_len(const char *s)
 {
 	int	i;
@@ -29,11 +29,11 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	i = 0;
 	dst_len = ft_len(dst);
 	src_len = ft_len(src);
-	while (i < size)
+	/*while (i < size)
 	{
 		dst[dst_len + i] = src[i];
 		i++;
-	}
+	}*/
 	dst[dst_len + i] = '\0';
 	return (dst_len + size);
 }

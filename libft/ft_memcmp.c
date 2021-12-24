@@ -9,7 +9,7 @@
 /*   Updated: 2021/12/22 07:54:36 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include "libft.h"
 int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
 	const char	*s1;

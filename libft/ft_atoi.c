@@ -9,7 +9,7 @@
 /*   Updated: 2021/06/30 19:37:29 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include "libft.h"
 void	check(char *str, int *count_negative, int *i)
 {
 	if (*str == 45)

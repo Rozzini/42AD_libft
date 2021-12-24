@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-
+#include "libft.h"
 size_t	ft_len(char *s)
 {
 	size_t	i;

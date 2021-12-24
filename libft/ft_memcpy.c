@@ -9,7 +9,7 @@
 /*   Updated: 2021/12/21 01:34:04 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include "libft.h"
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	char		*d;

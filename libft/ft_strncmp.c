@@ -9,7 +9,7 @@
 /*   Updated: 2021/06/28 12:17:15 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include "libft.h"
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
 	unsigned int	i;
