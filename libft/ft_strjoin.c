@@ -35,11 +35,11 @@ void	ft_strcpy(char *dest, char *src, int index)
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		i;
+	//int		i;
 	int		len;
 	char	*result;
 
-	i = 0;
+	//i = 0;
 	len = ft_len((char *)s1) + ft_len((char *)s2);
 	result = (char *)malloc((len + 1) * sizeof(char));
 	ft_strcpy(result, (char *)s1, 0);

@@ -9,7 +9,7 @@
 /*   Updated: 2021/12/22 20:23:37 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include <stdio.h>
 #include <stdlib.h>
 #include "libft.h"
 size_t	ft_len(char *s)
@@ -28,7 +28,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 
 	i = 0;
-	if (s == NULL || ft_len((char *)s) < (size_t)start + len || len == 0)
+	if (s == NULL || ft_strlen((char *)s) < (size_t)start + len || len == 0)
 		return (NULL);
 	res = (char *)malloc((len + 1) * sizeof(char));
 	while (i < len)
@@ -37,4 +37,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		i++;
 	}
 	return (res);
+}
+
+int main()
+{
+	char *s = "car dog car";
+	printf("%s\n", ft_substr(s, 3, 7));
+	return 0;
 }
