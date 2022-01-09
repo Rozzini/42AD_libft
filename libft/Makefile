@@ -1,59 +1,20 @@
 NAME = libft.a
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-AR = ar rcs
-RM = rm -f
+SRCS=*.c
 
-FILES = ft_memset \
-		ft_bzero \
-		ft_memcpy \
-		ft_memmove \
-		ft_memchr \
-		ft_memcmp \
-		ft_strlen \
-		ft_strlcpy \
-		ft_strlcat \
-		ft_strchr \
-		ft_strrchr \
-		ft_strnstr \
-		ft_strncmp \
-		ft_atoi \
-		ft_isalpha \
-		ft_isdigit \
-		ft_isalnum \
-		ft_isascii \
-		ft_isprint \
-		ft_toupper \
-		ft_tolower \
-		ft_calloc \
-		ft_strdup \
-		ft_substr \
-		ft_strjoin \
-
-
-SRCS_DIR = ./
-SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
-SRCS_B = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES_B)))
-
-OBJS_DIR = ./
-OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
-
-
-.c.o: $(SRCS)
-	$(CC) $(CFLAGS) -c -o $@ $<
-
-$(NAME): $(OBJS)
-	$(AR) $@ $^
+OBJECTS=*.o
 
 all: $(NAME)
 
+$(NAME):
+	gcc -Wall -Wextra -Werror -c $(SRCS)
+	ar -rc $(NAME) $(OBJECTS)
+	ranlib $(NAME)
+
 clean:
-	$(RM) $(OBJS)
+	/bin/rm -f *.o
 
 fclean: clean
-	$(RM) $(NAME)
+	/bin/rm -f $(NAME)
 
-re: clean all
-
-.PHONY: bonus all clean fclean re
+re: fclean all
