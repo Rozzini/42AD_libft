@@ -13,33 +13,32 @@
 
 NAME		=	libft.a
 SRC_DIR 	=	src/
-OBJS_DIR	=	obj/
+INCLUDE		=	include
 CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra -I
-RM			=	rm -f
-AR			=	ar rcs
 
 
-IS_DIR	=	ft_is/
-IS		=	ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint
+IS_DIR	=	is/
+IS		=	ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c
 
-MEM_DIR	=	ft_mem/
-MEM		=	ft_bzero ft_calloc ft_memchr ft_memcmp ft_memmove ft_memset
+MEM_DIR	=	mem/
+MEM		=	ft_bzero.c ft_calloc.c ft_memchr.c ft_memcmp.c ft_memmove.c \
+				ft_memset.c
 
-PUT_DIR	=	ft_put/
-PUT		=	ft_putchar_fd ft_putendl_fd ft_putnbr_fd ft_putstr_fd
+PUT_DIR	=	put/
+PUT		=	ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c
 
-TO_DIR	=	ft_to/
-TO		=	ft_atoi ft_itoa ft_tolower ft_toupper
+TO_DIR	=	to/
+TO		=	ft_atoi.c ft_itoa.c ft_tolower.c ft_toupper.c
 
-STR_DIR	=	ft_str/
-STR		=	ft_split ft_strchr ft_strdup ft_striteri ft_strjoin \
-				ft_strlcat ft_strlcpy ft_strlen ft_strmapi ft_strncmp \
-				ft_strnstr ft_strrchr ft_strtrim ft_substr
+STR_DIR	=	str/
+STR		=	ft_split.c ft_strchr.c ft_strdup.c ft_striteri.c ft_strjoin.c \
+				ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c \
+				ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c
 
-LST_DIR	=	ft_lst/
-LST		=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone \
-				ft_lstiter ft_lstlast ft_lstmap ft_lstnew ft_lstsize
+LST_DIR	=	lst/
+LST		=	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
+				ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
 
 SRC_FILES+=$(addprefix $(IS_DIR),$(IS))
 SRC_FILES+=$(addprefix $(MEM_DIR),$(MEM))
@@ -48,12 +47,13 @@ SRC_FILES+=$(addprefix $(TO_DIR),$(TO))
 SRC_FILES+=$(addprefix $(STR_DIR),$(STR))
 SRC_FILES+=$(addprefix $(LST_DIR),$(LST))
 
-OBJECTS= $(addsuffix .o, $(SRC_FILES))
+SRC =  $(addprefix $(SRC_DIR), $(SRC_FILES))
+OBJECTS = $(addsuffix .o, $(SRC_FILES))
 
 all: $(NAME)
 
 $(NAME):
-	gcc -Wall -Wextra -Werror -c $(SRCS)
+	$(CC) $(CFLAGS) $(INCLUDE) -c $(SRC)
 	ar -rc $(NAME) $(OBJECTS)
 	ranlib $(NAME)
 
