@@ -1,8 +1,5 @@
-NAME = libft.a
+EM_DIR = mem/
 
-SRCS=*.c
-
-OBJECTS=*.o
 
 all: $(NAME)
 
