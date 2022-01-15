@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include <string.h>
 
 char	*ft_strnstr(const char	*big, const char *little, size_t len)
 {
@@ -20,14 +19,14 @@ char	*ft_strnstr(const char	*big, const char *little, size_t len)
 	i = 0;
 	counter = 0;
 	if (*little == '\0' || little == NULL)
-		return ((char *)big);
+		return (&big);
 	while (big[i] != '\0' && i < len)
 	{
 			counter = 0;
 			while (big[i + counter] == little[counter] && i + counter < len)
 			{
 				if (counter == len)
-					return ((char *)big[i]);
+					return (&big[i]);
 				counter++;
 			}	
 		i++;

@@ -9,8 +9,6 @@
 /*   Updated: 2021/12/23 15:08:16 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdlib.h>
 #include "libft.h"
 
 int	ft_checkset(char c, char const *set)
@@ -69,8 +67,6 @@ char		*ft_strtrim(char const *s1, char const *set)
 		return (ft_strdup(s1));
 	start = ft_start(s1, set);
 	end = ft_end(s1, set);
-	printf("start: %d\n", start);
-	printf("end: %d\n", end);
 	if (start >= end)
 		return (ft_strdup(""));
 	returnstr = (char *)malloc(sizeof(char) * (end - start + 1));

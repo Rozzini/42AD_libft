@@ -10,76 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct s_list
-{
-void *content;
-struct s_list *next;
-} t_list;
-
-void ft_lstdelone(t_list *lst, void (*del)(void*))
-{
-    if (lst == NULL || del == NULL)
-        return ;
-    del(lst->content);
-	free(lst);
-}
-
-void ft_lstclear(t_list **lst, void (*del)(void*))
-{
-    t_list  *node;
-
-    if (lst == NULL)
-        return ;
-
-    while (*lst)
-    {
-        node = (*lst)->next;
-        ft_lstdelone(*lst, del);
-        (*lst) = node;
-    }
-}
-
-t_list *ft_lstlast(t_list *lst)
-{
-    t_list  *node;
-    if (lst == NULL)
-        return (0);
-    node = lst;
-    while (node->next != NULL)
-    {
-        node = node->next;
-    }
-    return (node);
-}
-
-void ft_lstadd_back(t_list **lst, t_list *new)
-{
-    t_list *last_node;
-
-    if (lst == NULL)
-        *lst = new;
-    else
-    {
-        last_node = ft_lstlast(&lst);
-        last_node->next = new;
-    }
-}
-
-t_list *ft_lstnew(void *content)
-{
-    t_list  *node;
-
-    node = (t_list *)malloc(sizeof(*node));
-
-    if (node == NULL)
-        return (NULL);
-    node->content = content;
-    node->next = NULL;
-    return (node);
-}
+#include "libft.h"
 
 t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
@@ -96,9 +27,9 @@ t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
         if (new_list == NULL)
             new_list = new_node;
         else    
-            ft_lstadd_back(new_list, new_node);
+            ft_lstadd_back(&new_list, new_node);
         node = node->next;
     }
-    ft_lstclear(lst, del);
+    ft_lstclear(&lst, del);
     return (new_list);
 }

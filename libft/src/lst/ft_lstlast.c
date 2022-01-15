@@ -9,15 +9,7 @@
 /*   Updated: 2022/01/09 21:53:30 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct s_list
-{
-void *content;
-struct s_list *next;
-} t_list;
+#include "libft.h"
 
 t_list *ft_lstlast(t_list *lst)
 {

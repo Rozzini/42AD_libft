@@ -9,8 +9,6 @@
 /*   Updated: 2021/12/31 12:40:29 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-#include <stdlib.h>
 #include "libft.h"
 
 int     ft_count(char const *s, char c)

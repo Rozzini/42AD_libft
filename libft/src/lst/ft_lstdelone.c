@@ -9,15 +9,7 @@
 /*   Updated: 2022/01/09 22:07:10 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct s_list
-{
-void *content;
-struct s_list *next;
-} t_list;
+#include "libft.h"
 
 void ft_lstdelone(t_list *lst, void (*del)(void*))
 {
