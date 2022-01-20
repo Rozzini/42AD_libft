@@ -36,8 +36,8 @@ STR		=	ft_split ft_strchr ft_strdup ft_striteri ft_strjoin \
 				ft_strlcat ft_strlcpy ft_strlen ft_strmapi ft_strncmp \
 				ft_strnstr ft_strrchr ft_strtrim ft_substr
 
-LST_DIR	=	lst/
-LST		=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone \
+BONUS_DIR	=	lst/
+BONUS		=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone \
 				ft_lstiter ft_lstlast ft_lstmap ft_lstnew ft_lstsize
 
 SRC_FILES+=$(addprefix $(IS_DIR),$(IS))
@@ -45,11 +45,15 @@ SRC_FILES+=$(addprefix $(MEM_DIR),$(MEM))
 SRC_FILES+=$(addprefix $(PUT_DIR),$(PUT))
 SRC_FILES+=$(addprefix $(TO_DIR),$(TO))
 SRC_FILES+=$(addprefix $(STR_DIR),$(STR))
-SRC_FILES+=$(addprefix $(LST_DIR),$(LST))
+BONUS_FILES+=$(addprefix $(LST_DIR),$(LST))
 
-OBJ_FILES = $(IS) $(MEM) $(PUT) $(TO) $(STR) $(LST)
+OBJ_FILES = $(IS) $(MEM) $(PUT) $(TO) $(STR)
 SRC =  $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJECTS = $(addsuffix .o, $(OBJ_FILES))
+
+BONUS_OBJ_FILES = $(BONUS)
+BONUS_SRC =  $(addprefix $(BONUS_DIR), $(addsuffix .c, $(BONUS)))
+BONUS_OBJECTS = $(addsuffix .o, $(BONUS_OBJ_FILES))
 
 all: $(NAME)
 
@@ -63,5 +67,10 @@ clean:
 
 fclean: clean
 	/bin/rm -f $(NAME)
+
+bonus: $(BONUS_SRC)
+	$(CC) $(CFLAGS) $(INCLUDE) -c $(BONUS_SRC)
+	ar rc $(NAME) $(BONUS_OBJECTS)
+	ranlib $(NAME)
 
 re: fclean all
