@@ -9,12 +9,12 @@
 /*   Updated: 2021/12/21 00:10:03 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
+
 void	*ft_memset(void *s, int c, size_t n)
 {
 	unsigned char	*p;
-	size_t	i;
+	size_t			i;
 
 	p = s;
 	i = 0;

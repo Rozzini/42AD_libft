@@ -25,11 +25,9 @@ void	ft_strcpy(char *dest, char *src, int index)
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	//int		i;
 	int		len;
 	char	*result;
 
-	//i = 0;
 	len = ft_strlen((char *)s1) + ft_strlen((char *)s2);
 	result = (char *)malloc((len + 1) * sizeof(char));
 	ft_strcpy(result, (char *)s1, 0);

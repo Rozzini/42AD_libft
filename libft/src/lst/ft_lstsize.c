@@ -9,22 +9,21 @@
 /*   Updated: 2022/01/09 21:47:55 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
-int ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
-    int size;
+	t_list	*node;
+	int		size;
 
-    size = 0;
-    t_list  *node;
-    if (lst == NULL)
-        return (0);
-    node = lst;
-    while (node->next != NULL)
-    {
-        size++;
-        node = node->next;
-    }
-    return (size);
+	size = 0;
+	if (lst == NULL)
+		return (0);
+	node = lst;
+	while (node->next != NULL)
+	{
+		size++;
+		node = node->next;
+	}
+	return (size);
 }

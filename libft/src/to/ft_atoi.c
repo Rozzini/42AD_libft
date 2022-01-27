@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+
 void	check(char *str, int *count_negative, int *i)
 {
 	if (*str == 45)

@@ -22,13 +22,13 @@ char	*ft_strnstr(const char	*big, const char *little, size_t len)
 		return ((char *)big);
 	while (big[i] != '\0' && i < len)
 	{
-			counter = 0;
-			while (big[i + counter] == little[counter] && i + counter < len)
-			{
-				if (counter == len)
-					return ((char *)&big[i]);
-				counter++;
-			}	
+		counter = 0;
+		while (big[i + counter] == little[counter] && i + counter < len)
+		{
+			if (counter == len)
+				return ((char *)&big[i]);
+			counter++;
+		}	
 		i++;
 	}
 	return (NULL);

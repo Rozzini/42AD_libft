@@ -10,11 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+
 void	ft_putendl_fd(char *s, int fd)
 {
-    int i;
+	int	i;
 
-    i = 0;
+	i = 0;
 	if (s != NULL)
 	{
 		while (s[i] != '\0')
