@@ -24,7 +24,7 @@ char	*ft_strchr(char *s, int c)
 			return (&str[i]);
 		i++;
 	}
-	if (str[i] == '\0')
+	if (c == '\0')
 		return (&str[i]);
 	return (NULL);
 }

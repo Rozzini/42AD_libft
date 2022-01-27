@@ -13,21 +13,14 @@
 
 char	*ft_strrchr(char *s, int c)
 {
-	char	*str;
-	int		i;
-	int		result;
+	int	i;
 
-	result = -1;
-	i = 0;
-	str = s;
-	while (str[i] != '\0')
+	i = ft_strlen(s) - 1;
+	while (i >= 0)
 	{
-		if (str[i] == c)
-			result = i;
-		i++;
+		if (s[i] == c)
+			return (&s[i]);
+		i--;
 	}
-	if (str[i] == '\0' && result == -1)
-		return (&str[i]);
-	else
-		return (&str[result]);
+	return (NULL);
 }

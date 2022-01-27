@@ -13,22 +13,20 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*node;
 	t_list	*new_node;
 	t_list	*new_list;
 
 	if (lst == NULL || f == NULL || del == NULL)
 		return (NULL);
 	new_list = NULL;
-	node = lst;
 	while (lst)
 	{
-		new_node = ft_lstnew(f(node->content));
+		new_node = ft_lstnew(f(lst->content));
 		if (new_list == NULL)
 			new_list = new_node;
 		else
 			ft_lstadd_back(&new_list, new_node);
-		node = node->next;
+		lst = lst->next;
 	}
 	ft_lstclear(&lst, del);
 	return (new_list);

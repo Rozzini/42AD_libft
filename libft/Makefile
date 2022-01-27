@@ -22,8 +22,8 @@ IS_DIR	=	is/
 IS		=	ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint
 
 MEM_DIR	=	mem/
-MEM		=	ft_bzero ft_calloc ft_memchr ft_memcmp ft_memmove \
-				ft_memset
+MEM		=	ft_bzero ft_calloc ft_memchr ft_memcmp ft_memcpy\
+				ft_memmove ft_memset
 
 PUT_DIR	=	put/
 PUT		=	ft_putchar_fd ft_putendl_fd ft_putnbr_fd ft_putstr_fd
@@ -52,7 +52,8 @@ SRC =  $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJECTS = $(addsuffix .o, $(OBJ_FILES))
 
 BONUS_OBJ_FILES = $(BONUS)
-BONUS_SRC =  $(addprefix $(BONUS_DIR), $(addsuffix .c, $(BONUS)))
+BONUS_FILES = $(addprefix $(BONUS_DIR),$(BONUS))
+BONUS_SRC =  $(addprefix $(SRC_DIR), $(addsuffix .c, $(BONUS_FILES)))
 BONUS_OBJECTS = $(addsuffix .o, $(BONUS_OBJ_FILES))
 
 all: $(NAME)
@@ -68,7 +69,7 @@ clean:
 fclean: clean
 	/bin/rm -f $(NAME)
 
-bonus: $(BONUS_SRC)
+bonus:
 	$(CC) $(CFLAGS) $(INCLUDE) -c $(BONUS_SRC)
 	ar rc $(NAME) $(BONUS_OBJECTS)
 	ranlib $(NAME)
