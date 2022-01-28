@@ -14,21 +14,19 @@
 char	*ft_strnstr(const char	*big, const char *little, size_t len)
 {
 	size_t	i;
-	size_t	counter;
+	size_t	j;
 
 	i = 0;
-	counter = 0;
+	j = 0;
 	if (*little == '\0' || little == NULL)
 		return ((char *)big);
 	while (big[i] != '\0' && i < len)
 	{
-		counter = 0;
-		while (big[i + counter] == little[counter] && i + counter < len)
-		{
-			if (counter == len)
-				return ((char *)&big[i]);
-			counter++;
-		}	
+		j = 0;
+		while (big[i + j] == little[j] && i + j < len && little[j] != '\0')
+			j++;
+		if (j == len || little[j] == '\0')
+			return ((char *)&big[i]);	
 		i++;
 	}
 	return (NULL);

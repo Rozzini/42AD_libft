@@ -33,6 +33,7 @@ char	*ft_itoa(int n)
 {
 	char	*str;
 	int		i;
+
 	if (n == 0)
 		return ("0");
 	if (n == -2147483648)
@@ -42,14 +43,14 @@ char	*ft_itoa(int n)
 	if (!str)
 		return (NULL);
 	str[i--] = '\0';
-	if(n < 0)
+	if (n < 0)
 	{
 		n *= -1;
 		str[0] = '-';
 	}
 	while (n > 0)
 	{
-		str[i--] = (n%10) + '0';
+		str[i--] = (n % 10) + '0';
 		n /= 10;
 	}
 	return (str);
