@@ -16,6 +16,8 @@ int	len(int n)
 	int	len;
 
 	len = 0;
+	if (n == 0)
+		return (1);
 	if (n < 0)
 	{
 		n = n * -1;
@@ -29,20 +31,39 @@ int	len(int n)
 	return (len);
 }
 
+void	ret_ex(int n, char *str)
+{
+	char	*i_min;
+	int		i;
+
+	i = 0;
+	i_min = "-2147483648";
+	if (n == 0)
+	{
+		str[0] = '0';
+	}
+	else
+	{
+		str[i] = i_min[i];
+		i++;
+	}
+}
+
 char	*ft_itoa(int n)
 {
 	char	*str;
 	int		i;
 
-	if (n == 0)
-		return ("0");
-	if (n == -2147483648)
-		return ("-2147483648");
 	i = len(n);
 	str = (char *)malloc(sizeof(char) * (i + 1));
+	str[i--] = '\0';
+	if (n == 0 || n == -2147483648)
+	{
+		ret_ex(n, str);
+		return (str);
+	}
 	if (!str)
 		return (NULL);
-	str[i--] = '\0';
 	if (n < 0)
 	{
 		n *= -1;

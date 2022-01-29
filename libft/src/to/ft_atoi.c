@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-int	check(char *str, int *i)
+int	ft_check(const char *str, int *i)
 {
 	if (str[*i + 1] < 48 || str[*i + 1] > 57)
 		return (0);
@@ -30,7 +30,7 @@ int	check(char *str, int *i)
 	return (0);
 }
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int	i;
 	int	integer;
@@ -40,7 +40,7 @@ int	ft_atoi(char *str)
 	i = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
-	flag = check(str, &i);
+	flag = ft_check(str, &i);
 	if (flag == 0)
 		return (0);
 	while (str[i] >= 48 && str[i] <= 57)

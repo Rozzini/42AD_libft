@@ -23,7 +23,7 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-int		ft_atoi(char *str);
+int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nitems, size_t size);
 int		ft_isalnum(int c);
@@ -50,7 +50,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlen(const char *s);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-int		ft_strncmp(char *s1, char *s2, unsigned int n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char	*big, const char *little, size_t len);
 char	*ft_strrchr(char *s, int c);
 char	*ft_strtrim(char const *s1, char const *set);
