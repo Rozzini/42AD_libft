@@ -13,8 +13,6 @@
 
 int	ft_check(const char *str, int *i)
 {
-	if (str[*i + 1] < 48 || str[*i + 1] > 57)
-		return (0);
 	if (str[*i] == '+')
 	{
 		*i = *i + 1;
@@ -25,6 +23,8 @@ int	ft_check(const char *str, int *i)
 		*i = *i + 1;
 		return (-1);
 	}
+	if (str[*i] < 48 || str[*i] > 57)
+		return (0);
 	if (str[*i] >= 48 || str[*i] <= 57)
 		return (1);
 	return (0);

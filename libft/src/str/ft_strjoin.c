@@ -32,6 +32,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	result = (char *)malloc((len + 1) * sizeof(char));
 	ft_strcpy(result, (char *)s1, 0);
 	ft_strcpy(result, (char *)s2, ft_strlen((char *)s1));
-	result[len + 1] = '\0';
+	result[len] = '\0';
 	return (result);
 }

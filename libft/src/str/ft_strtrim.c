@@ -49,10 +49,23 @@ int	ft_end(const char *s1, const char *set)
 	while (len - i >= 0)
 	{
 		if (ft_checkset(s1[len - i - 1], set) == 0)
-			return (len - i - 1);
+			return (len - i);
 		i++;
 	}
 	return (len - i);
+}
+
+void	ft_cpy(char *dst, char *src, int l)
+{
+	int	i;
+
+	i = 0;
+	while (i < l)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
@@ -72,6 +85,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	returnstr = (char *)malloc(sizeof(char) * (end - start + 1));
 	if (returnstr == NULL)
 		return (NULL);
-	ft_strlcpy(returnstr, &s1[start], end - start + 1);
+	ft_cpy(returnstr, (char *)&s1[start], end - start);
 	return (returnstr);
 }

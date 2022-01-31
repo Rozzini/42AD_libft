@@ -11,68 +11,52 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-int	len(int n)
+int	ft_len(int n)
 {
 	int	len;
+	int	nb;
 
 	len = 0;
+	nb = n;
 	if (n == 0)
 		return (1);
-	if (n < 0)
+	if (n == -2147483648)
+		return (10);
+	if (nb < 0)
+		nb *= -1;
+	while (nb > 0)
 	{
-		n = n * -1;
-		len++;
-	}
-	while (n > 0)
-	{
-		n = n / 10;
+		nb /= 10;
 		len++;
 	}
 	return (len);
 }
 
-void	ret_ex(int n, char *str)
-{
-	char	*i_min;
-	int		i;
-
-	i = 0;
-	i_min = "-2147483648";
-	if (n == 0)
-	{
-		str[0] = '0';
-	}
-	else
-	{
-		str[i] = i_min[i];
-		i++;
-	}
-}
-
 char	*ft_itoa(int n)
 {
-	char	*str;
-	int		i;
+	char	*str_n;
+	int		nb;
+	int		n_len;
 
-	i = len(n);
-	str = (char *)malloc(sizeof(char) * (i + 1));
-	str[i--] = '\0';
-	if (n == 0 || n == -2147483648)
-	{
-		ret_ex(n, str);
-		return (str);
-	}
-	if (!str)
-		return (NULL);
+	nb = n;
+	n_len = ft_len(nb);
 	if (n < 0)
+		n_len++;
+	str_n = (char *)malloc(sizeof(char) * (n_len + 1));
+	str_n[n_len--] = '\0';
+	while (n_len >= 0)
 	{
-		n *= -1;
-		str[0] = '-';
+		if (n < 0 && n_len == 0)
+		{
+			str_n[0] = '-';
+			break ;
+		}
+		if (n < 0)
+			str_n[n_len] = ((nb % 10) * -1) + '0';
+		else
+			str_n[n_len] = nb % 10 + '0';
+		nb /= 10;
+		n_len--;
 	}
-	while (n > 0)
-	{
-		str[i--] = (n % 10) + '0';
-		n /= 10;
-	}
-	return (str);
+	return (str_n);
 }

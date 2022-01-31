@@ -29,7 +29,7 @@ int	ft_count(char const *s, char c)
 				i++;
 		}
 	}
-	return (counter + 1);
+	return (counter);
 }
 
 char	*ft_add_word(char const *s, int start, int end)
