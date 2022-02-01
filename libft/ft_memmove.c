@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mraspors <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 08:53:10 by mraspors          #+#    #+#             */
-/*   Updated: 2021/12/22 08:53:12 by mraspors         ###   ########.fr       */
+/*   Created: 2021/12/21 01:35:32 by mraspors          #+#    #+#             */
+/*   Updated: 2021/12/21 01:35:33 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strdup(const char *string)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	*str;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	while (string[i] != '\0')
-		i++;
-	str = (char *)malloc((i + 1) * sizeof(char));
-	i = 0;
-	while (string[i] != '\0')
+	if (dest == NULL && src == NULL)
+		return (dest);
+	if (dest < src)
 	{
-		str[i] = string[i];
-		i++;
+		while (i < n)
+		{
+			((char *)dest)[i] = ((char *)src)[i];
+			i++;
+		}
 	}
-	str[i] = '\0';
-	return (str);
+	else
+	{
+		i = n;
+		while (i > 0)
+		{
+			((char *)dest)[i - 1] = ((char *)src)[i - 1];
+			i--;
+		}
+	}
+	return (dest);
 }

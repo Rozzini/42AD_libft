@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mraspors <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 21:52:57 by mraspors          #+#    #+#             */
-/*   Updated: 2021/12/23 15:06:16 by mraspors         ###   ########.fr       */
+/*   Created: 2022/01/06 15:17:31 by mraspors          #+#    #+#             */
+/*   Updated: 2022/01/06 15:17:31 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	ft_strcpy(char *dest, char *src, int index)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	i;
+	unsigned int	i;
+	char			*str;
 
+	if (s == NULL)
+		return (NULL);
+	str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (str == NULL)
+		return (NULL);
 	i = 0;
-	while (src[i] != '\0')
+	while (s[i] != '\0')
 	{
-		dest[index + i] = src[i];
+		str[i] = f(i, s[i]);
 		i++;
 	}
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	int		len;
-	char	*result;
-
-	len = ft_strlen((char *)s1) + ft_strlen((char *)s2);
-	result = (char *)malloc((len + 1) * sizeof(char));
-	ft_strcpy(result, (char *)s1, 0);
-	ft_strcpy(result, (char *)s2, ft_strlen((char *)s1));
-	result[len] = '\0';
-	return (result);
+	str[i] = '\0';
+	return (str);
 }

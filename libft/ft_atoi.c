@@ -30,11 +30,22 @@ int	ft_check(const char *str, int *i)
 	return (0);
 }
 
+int	ret_int(unsigned long integer, int flag)
+{
+	if (integer > 2147483647 && flag == 1)
+		return (-1);
+	if (integer > 2147483648 && flag == -1)
+		return (0);
+	if (flag == -1)
+		integer *= -1;
+	return (integer);
+}
+
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	integer;
-	int	flag;
+	int				i;
+	unsigned long	integer;
+	int				flag;
 
 	integer = 0;
 	i = 0;
@@ -52,7 +63,6 @@ int	ft_atoi(const char *str)
 			break ;
 		i++;
 	}
-	if (flag == -1)
-		integer *= -1;
+	integer = ret_int(integer, flag);
 	return (integer);
 }

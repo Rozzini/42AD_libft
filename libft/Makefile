@@ -11,67 +11,45 @@
 # **************************************************************************** #
 
 
-NAME		=	libft.a
-SRC_DIR 	=	src/
-INCLUDE		=	include
-CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra -I
+NAME = libft.a
 
+OBJS = ${SRCS:.c=.o}
 
-IS_DIR	=	is/
-IS		=	ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint
+OBJSBONUS = ${BONUS:.c=.o}
 
-MEM_DIR	=	mem/
-MEM		=	ft_bzero ft_calloc ft_memchr ft_memcmp ft_memcpy\
-				ft_memmove ft_memset
+RM		= rm -f
 
-PUT_DIR	=	put/
-PUT		=	ft_putchar_fd ft_putendl_fd ft_putnbr_fd ft_putstr_fd
+GCCF = gcc -Wall -Wextra -Werror
 
-TO_DIR	=	to/
-TO		=	ft_atoi ft_itoa ft_tolower ft_toupper
+LIB = ar -rcs
 
-STR_DIR	=	str/
-STR		=	ft_split ft_strchr ft_strdup ft_striteri ft_strjoin \
-				ft_strlcat ft_strlcpy ft_strlen ft_strmapi ft_strncmp \
-				ft_strnstr ft_strrchr ft_strtrim ft_substr
+SRCS =	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c\
+		ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c\
+		ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c\
+		ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c\
+		ft_atoi.c ft_calloc.c ft_strdup.c ft_strjoin.c ft_substr.c\
+		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
+		ft_strtrim.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_split.c\
 
-BONUS_DIR	=	lst/
-BONUS		=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone \
-				ft_lstiter ft_lstlast ft_lstmap ft_lstnew ft_lstsize
+BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c\
+		ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c\
+		ft_lstmap.c
 
-SRC_FILES+=$(addprefix $(IS_DIR),$(IS))
-SRC_FILES+=$(addprefix $(MEM_DIR),$(MEM))
-SRC_FILES+=$(addprefix $(PUT_DIR),$(PUT))
-SRC_FILES+=$(addprefix $(TO_DIR),$(TO))
-SRC_FILES+=$(addprefix $(STR_DIR),$(STR))
-BONUS_FILES+=$(addprefix $(LST_DIR),$(LST))
+.c.o:
+		${GCCF} -c $< -o ${<:.c=.o}
 
-OBJ_FILES = $(IS) $(MEM) $(PUT) $(TO) $(STR)
-SRC =  $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJECTS = $(addsuffix .o, $(OBJ_FILES))
+$(NAME): ${OBJS}
+		@${LIB} ${NAME} ${OBJS}
 
-BONUS_OBJ_FILES = $(BONUS)
-BONUS_FILES = $(addprefix $(BONUS_DIR),$(BONUS))
-BONUS_SRC =  $(addprefix $(SRC_DIR), $(addsuffix .c, $(BONUS_FILES)))
-BONUS_OBJECTS = $(addsuffix .o, $(BONUS_OBJ_FILES))
+bonus: ${OBJSBONUS}
+		@${LIB} ${NAME} ${OBJSBONUS}
 
-all: $(NAME)
-
-$(NAME):
-	$(CC) $(CFLAGS) $(INCLUDE) -c $(SRC)
-	ar -rc $(NAME) $(OBJECTS)
-	ranlib $(NAME)
+all:	${NAME}
 
 clean:
-	/bin/rm -f *.o
+		${RM} ${OBJS} ${OBJSBONUS}
 
-fclean: clean
-	/bin/rm -f $(NAME)
+fclean:	clean
+		${RM} ${NAME}
 
-bonus:
-	$(CC) $(CFLAGS) $(INCLUDE) -c $(BONUS_SRC)
-	ar rc $(NAME) $(BONUS_OBJECTS)
-	ranlib $(NAME)
-
-re: fclean all
+re:		fclean all

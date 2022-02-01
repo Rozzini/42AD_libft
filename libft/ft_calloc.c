@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mraspors <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/21 00:03:18 by mraspors          #+#    #+#             */
-/*   Updated: 2021/12/21 00:03:21 by mraspors         ###   ########.fr       */
+/*   Created: 2021/12/22 08:19:11 by mraspors          #+#    #+#             */
+/*   Updated: 2021/12/22 08:51:37 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	*ft_calloc(size_t nitems, size_t size)
 {
-	int	i;
-	int	result;
+	char	*pointer;
+	size_t	i;
 
+	if (nitems == 0 || size == 0)
+	{
+		pointer = malloc(nitems * size);
+		pointer[0] = '\0';
+		return (pointer);
+	}
+	pointer = malloc(nitems * size);
+	if (!pointer)
+		return (NULL);
 	i = 0;
-	result = 0;
-	while (s[i++] != '\0')
-		result++;
-	return (result);
+	while (i < nitems * size)
+		pointer[i++] = '\0';
+	return (pointer);
 }

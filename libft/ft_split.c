@@ -38,7 +38,7 @@ char	*ft_add_word(char const *s, int start, int end)
 	char	*word;
 
 	word = malloc((end - start + 1) * sizeof(char));
-	if (word == NULL)
+	if (!word)
 		return (NULL);
 	i = 0;
 	while (i < end - start)
@@ -58,7 +58,7 @@ char	**ft_split(char const *s, char c)
 	char	**result;
 
 	result = malloc((ft_count(s, c) + 1) * sizeof(char *));
-	if (s == NULL || result == NULL)
+	if (!s || !result)
 		return (NULL);
 	i = 0;
 	j = 0;

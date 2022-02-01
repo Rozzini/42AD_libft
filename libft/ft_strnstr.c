@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mraspors <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 22:36:15 by mraspors          #+#    #+#             */
-/*   Updated: 2022/01/27 05:38:43 by mraspors         ###   ########.fr       */
+/*   Created: 2021/12/22 08:07:10 by mraspors          #+#    #+#             */
+/*   Updated: 2021/12/22 08:07:11 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+char	*ft_strnstr(const char	*big, const char *little, size_t len)
 {
-	t_list	*new_node;
-	t_list	*new_list;
+	size_t	i;
+	size_t	j;
 
-	if (lst == NULL || f == NULL || del == NULL)
+	i = 0;
+	j = 0;
+	if (*little == '\0' || little == NULL)
+		return ((char *)big);
+	if (ft_strlen(big) < ft_strlen(little))
 		return (NULL);
-	new_list = NULL;
-	while (lst)
+	while (big[i] != '\0' && i < len)
 	{
-		new_node = ft_lstnew(f(lst->content));
-		if (new_list == NULL)
-			new_list = new_node;
-		else
-			ft_lstadd_back(&new_list, new_node);
-		lst = lst->next;
+		j = 0;
+		while (big[i + j] == little[j] && i + j < len && little[j] != '\0')
+			j++;
+		if (j == len || little[j] == '\0')
+			return ((char *)&big[i]);
+		i++;
 	}
-	ft_lstclear(&lst, del);
-	return (new_list);
+	return (NULL);
 }

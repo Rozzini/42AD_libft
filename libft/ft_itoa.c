@@ -32,6 +32,17 @@ int	ft_len(int n)
 	return (len);
 }
 
+char	helper(int n, int nb)
+{
+	char	result;
+
+	if (n < 0)
+		result = ((nb % 10) * -1) + '0';
+	else
+		result = nb % 10 + '0';
+	return (result);
+}
+
 char	*ft_itoa(int n)
 {
 	char	*str_n;
@@ -43,6 +54,8 @@ char	*ft_itoa(int n)
 	if (n < 0)
 		n_len++;
 	str_n = (char *)malloc(sizeof(char) * (n_len + 1));
+	if (!str_n)
+		return (NULL);
 	str_n[n_len--] = '\0';
 	while (n_len >= 0)
 	{
@@ -51,10 +64,7 @@ char	*ft_itoa(int n)
 			str_n[0] = '-';
 			break ;
 		}
-		if (n < 0)
-			str_n[n_len] = ((nb % 10) * -1) + '0';
-		else
-			str_n[n_len] = nb % 10 + '0';
+		str_n[n_len] = helper(n, nb);
 		nb /= 10;
 		n_len--;
 	}
