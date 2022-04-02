@@ -52,29 +52,29 @@ char	*ft_add_word(char const *s, int start, int end)
 
 char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int		j;
-	int		index;
+	int		var[3];
 	char	**result;
 
-	result = malloc((ft_count(s, c) + 1) * sizeof(char *));
-	if (!s || !result)
+	if (!s)
 		return (NULL);
-	i = 0;
-	j = 0;
-	index = 0;
-	while (s[i] != '\0')
+	result = malloc((ft_count(s, c) + 1) * sizeof(char *));
+	if (!result)
+		return (NULL);
+	var[0] = 0;
+	var[1] = 0;
+	var[2] = 0;
+	while (s[var[0]] != '\0')
 	{
-		if (s[i] != c)
+		if (s[var[0]] != c)
 		{
-			index = i;
-			while (s[i] != c && s[i] != '\0')
-				i++;
-			result[j++] = ft_add_word(s, index, i);
+			var[2] = var[0];
+			while (s[var[0]] != c && s[var[0]] != '\0')
+				var[0]++;
+			result[var[1]++] = ft_add_word(s, var[2], var[0]);
 		}
 		else
-			i++;
+			var[0]++;
 	}
-	result[j] = NULL;
+	result[var[1]] = NULL;
 	return (result);
 }

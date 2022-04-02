@@ -11,29 +11,21 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-void	ft_strcpy(char *dest, char *src, int index)
-{
-	int	i;
-
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[index + i] = src[i];
-		i++;
-	}
-}
-
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		len;
-	char	*result;
+	char	*str;
+	int		s1_l;
+	int		s2_l;
 
-	len = ft_strlen((char *)s1) + ft_strlen((char *)s2);
-	result = (char *)malloc((len + 1) * sizeof(char));
-	if (!result)
+	if (!s1 || !s2)
 		return (NULL);
-	ft_strcpy(result, (char *)s1, 0);
-	ft_strcpy(result, (char *)s2, ft_strlen((char *)s1));
-	result[len] = '\0';
-	return (result);
+	s1_l = ft_strlen(s1);
+	s2_l = ft_strlen(s2);
+	str = (char *)malloc(sizeof(char) * (s1_l + s2_l + 1));
+	if (!str)
+		return (NULL);
+	ft_memcpy(str, s1, s1_l);
+	ft_memcpy(&str[s1_l], s2, s2_l);
+	str[s1_l + s2_l] = '\0';
+	return (str);
 }

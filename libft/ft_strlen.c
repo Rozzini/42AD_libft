@@ -14,11 +14,9 @@
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
-	size_t	result;
 
 	i = 0;
-	result = 0;
-	while (s[i++] != '\0')
-		result++;
-	return (result);
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }

@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_print_number.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mraspors <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/28 17:29:03 by mraspors          #+#    #+#             */
-/*   Updated: 2021/06/28 17:56:27 by mraspors         ###   ########.fr       */
+/*   Created: 2022/01/19 21:08:55 by mraspors          #+#    #+#             */
+/*   Updated: 2022/03/20 18:48:13 by mraspors         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+int	ft_print_number(int nbr)
 {
-	size_t	i[4];
+	char	c;
+	int		length;
 
-	i[0] = ft_strlen(dst);
-	i[1] = ft_strlen(src);
-	i[2] = ft_strlen(dst) + ft_strlen(src);
-	i[3] = 0;
-	if (!dstsize)
-		return (i[1]);
-	if (i[0] > dstsize)
-		return (dstsize + i[1]);
-	while (src[i[3]] && i[0] < dstsize - 1)
-		dst[i[0]++] = src[i[3]++];
-	dst[i[0]] = '\0';
-	return (i[2]);
+	length = 0;
+	if (nbr == -2147483648)
+	{
+		write (1, "-2147483648", 11);
+		return (11);
+	}
+	if (nbr < 0)
+	{
+		length += ft_print_char('-');
+		nbr *= -1;
+	}
+	if (nbr >= 10)
+		length += ft_print_number(nbr / 10);
+	c = nbr % 10 + '0';
+	length += ft_print_char(c);
+	return (length);
 }
